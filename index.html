@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="da">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Word Swapper · Make the web yours</title>
-  <meta name="description" content="Word Swapper is a simple Chrome extension that swaps words on webpages. No tracking. No data collection.">
+  <title>Bunker Swapper · Gør nettet lidt sjovere</title>
+  <meta name="description" content="Bunker Swapper er en lille Chrome‑extension, der erstatter alle forekomster af ‘Putin’ med ‘Grandpa in his bunker’. Global, letvægts, uden tracking – med et pro‑Ukraine ikon.">
   <style>
     :root { --bg:#0b0b10; --fg:#e7e7ee; --muted:#a3a3b2; --card:#13131a; --accent:#a78bfa; --ring:rgba(167,139,250,.2); --shadow:0 16px 48px rgba(0,0,0,.35); --radius:16px }
     *{box-sizing:border-box}
@@ -13,7 +13,7 @@
     header{display:flex;align-items:center;justify-content:space-between;gap:16px}
     .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--fg)}
     .logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#7c3aed,#a78bfa);display:grid;place-items:center;box-shadow:var(--shadow)}
-    .logo span{font-size:22px}
+    .logo span{font-size:18px}
     nav a{color:var(--muted);text-decoration:none;margin-left:16px}
     nav a:hover{color:var(--fg)}
     .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px}
@@ -28,9 +28,15 @@
     .feat{background:#0f0f15;border:1px solid #222231;border-radius:14px;padding:16px}
     .feat h3{margin:0 0 8px;font-size:16px}
     .feat p{margin:0;color:var(--muted);font-size:14px}
-    .preview{aspect-ratio:4/3;border-radius:16px;overflow:hidden;border:1px solid #222231;background:radial-gradient(120px 120px at 30% 35%,#a78bfa33,transparent),radial-gradient(180px 160px at 70% 70%,#7c3aed22,transparent),linear-gradient(160deg,#151524,#0d0d13)}
+    .preview{aspect-ratio:4/3;border-radius:16px;overflow:hidden;border:1px solid #222231;background:radial-gradient(120px 120px at 30% 35%,#a78bfa33,transparent),radial-gradient(180px 160px at 70% 70%,#7c3aed22,transparent),linear-gradient(160deg,#151524,#0d0d13);position:relative}
+    .preview .bubble{position:absolute;left:20px;top:20px;right:20px;background:#10101a;border:1px solid #26263a;border-radius:12px;padding:14px;font-size:14px;line-height:1.45}
+    .preview .bubble code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
     .code{background:#0f0f15;border:1px solid #222231;border-radius:12px;padding:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px}
     footer{margin-top:48px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+    .ua-flag{display:inline-flex;gap:4px;align-items:center}
+    .ua-flag i{width:12px;height:12px;border-radius:3px;display:inline-block}
+    .ua-flag i.blue{background:#0057b7}
+    .ua-flag i.yellow{background:#ffd700}
     @media (max-width:860px){.hero{grid-template-columns:1fr}.features{grid-template-columns:1fr}}
   </style>
 </head>
@@ -38,56 +44,64 @@
   <div class="wrap">
     <header>
       <a class="brand" href="./">
-        <div class="logo"><span>↔︎</span></div>
-        <strong>Word Swapper</strong>
+        <div class="logo" aria-hidden="true"><span>🧓🏽🏚️</span></div>
+        <strong>Bunker Swapper</strong>
       </a>
       <nav>
-        <a href="./">Home</a>
-        <a href="./privacy.html">Privacy</a>
-        <a href="https://chromewebstore.google.com/" target="_blank" rel="noopener">Get the extension</a>
+        <a href="./">Hjem</a>
+        <a href="./privacy.html">Privatliv</a>
+        <a href="https://chromewebstore.google.com/" target="_blank" rel="noopener">Hent udvidelsen</a>
       </nav>
     </header>
 
     <section class="hero">
       <div class="card">
-        <h1>Make the web yours</h1>
-        <p class="big">A tiny extension that swaps words on pages for a playful, personal reading experience. No tracking. No data collection.</p>
+        <h1>Erstat “Putin” med “Grandpa in his bunker”</h1>
+        <p class="big">En lille, global tekst‑udskifter, der gør læsning på nettet en smule mere sarkastisk. Alt kører lokalt. Ingen tracking. Ingen dataforbindelser.</p>
         <div class="cta">
-          <a class="btn primary" href="./privacy.html">Read privacy policy</a>
-          <a class="btn ghost" href="https://chromewebstore.google.com/" target="_blank" rel="noopener">View on Chrome Web Store</a>
+          <a class="btn primary" href="https://chromewebstore.google.com/" target="_blank" rel="noopener">Installer fra Chrome Web Store</a>
+          <a class="btn ghost" href="./privacy.html">Læs privatlivspolitik</a>
         </div>
         <div style="height:10px"></div>
         <div class="features">
           <div class="feat">
-            <h3>Zero tracking</h3>
-            <p>No analytics, no beacons, no third parties. Your rules live on your device.</p>
+            <h3>🌍 Global</h3>
+            <p>Virker på de fleste hjemmesider og sprogvarianter. Fanger tekstnoder, ikke formularfelter.</p>
           </div>
           <div class="feat">
-            <h3>Instant changes</h3>
-            <p>Edit rules in the popup and see updates immediately—no reload needed.</p>
+            <h3>⚡ Letvægter</h3>
+            <p>Minimal kode og lavt ressourceforbrug. Udskiftninger sker øjeblikkeligt, uden reload.</p>
           </div>
           <div class="feat">
-            <h3>Respectful by design</h3>
-            <p>Ignores form fields and editable areas. Only touches visible page text.</p>
+            <h3>🇺🇦 Pro‑Ukraine ikon</h3>
+            <p><span class="ua-flag" aria-label="Blå-gul ikon"><i class="blue"></i><i class="yellow"></i></span> Et diskret blå‑gult ikon som visuel markør for din støtte.</p>
           </div>
         </div>
       </div>
-      <div class="preview" aria-hidden="true"></div>
+      <div class="preview" aria-hidden="true">
+        <div class="bubble">
+          <strong>Før:</strong>
+          <div style="margin:6px 0 10px">… i dag udtalte <code>Putin</code> sig om …</div>
+          <strong>Efter:</strong>
+          <div>… i dag udtalte <code>Grandpa in his bunker</code> sig om …</div>
+        </div>
+      </div>
     </section>
 
     <section style="margin-top:36px">
       <div class="card">
-        <h2 style="margin-top:0">How it works</h2>
-        <p>Word Swapper runs a small content script that replaces text nodes on a page using your own rules.</p>
-        <div class="code"><pre><code>// Example rules
-"Acme Inc." → "My Company"
-"coffee" → "tea"</code></pre></div>
+        <h2 style="margin-top:0">Sådan virker den</h2>
+        <p>Bunker Swapper kører et lille content‑script, der finder synlig tekst på en side og erstatter bestemte ord. Den rører ikke ved inputfelter, formularer eller redigérbare områder.</p>
+        <div class="code"><pre><code>// Regel (forenklet eksempel)
+"Putin" → "Grandpa in his bunker"
+// Case-insensitive og typiske varianter håndteres.</code></pre></div>
+        <p style="color:var(--muted);margin-top:10px">Bemærk: Udvidelsen ændrer kun visning i din egen browser. Den sender ikke data nogen steder.</p>
       </div>
     </section>
 
     <footer>
-      <span>© 2025 Word Swapper</span>
-      <span><a href="./privacy.html" style="color:var(--fg)">Privacy</a></span>
+      <span>© 2025 Bunker Swapper</span>
+      <span><a href="./privacy.html" style="color:var(--fg)">Privatliv</a></span>
     </footer>
   </div>
 </body>
